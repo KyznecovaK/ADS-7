@@ -36,9 +36,9 @@ int Train::getLength() {
       current = current->next;
       countOp++;
     } while (current != first);
-    
+
     first->light = true;
-    
+
     current = first;
     int result = 0;
     do {
@@ -46,13 +46,13 @@ int Train::getLength() {
       countOp++;
       result++;
     } while (current->light == false);
-    
+
     return result;
   }
-  
+
   Car* marker = first;
   int attempt = 1;
-  
+
   while (true) {
     Car* walker = marker;
     for (int i = 0; i < attempt; i++) {
@@ -60,17 +60,17 @@ int Train::getLength() {
       countOp++;
     }
     walker->light = false;
-    
+
     for (int i = 0; i < attempt; i++) {
       walker = walker->next;
       countOp++;
     }
-    
+
     if (walker == marker && walker->light == false) {
       marker->light = true;
       return attempt;
     }
-    
+
     attempt++;
   }
 }
